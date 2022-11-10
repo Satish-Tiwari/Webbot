@@ -6,7 +6,7 @@ import wikipedia
 import webbrowser
 
 def index(request):
-    return render(request, 'webbot/index.htm')
+    return render(request, 'webbot/index.html')
 
 
 def bot_search(request):
@@ -17,16 +17,16 @@ def bot_search(request):
         client = wolframalpha.Client("X2A4HL-W6L8TKGT6G")
         res = client.query(query)
         ans = next(res.results).text
-        return render(request, 'webbot/index.htm', {'ans': ans, 'query': query})
+        return render(request, 'webbot/index.html', {'ans': ans, 'query': query})
 
             
     except Exception:
         try:
             ans = wikipedia.summary(query, sentences=10)
-            return render(request, 'webbot/index.htm', {'ans': ans, 'query': query})
+            return render(request, 'webbot/index.html', {'ans': ans, 'query': query})
 
 
         except Exception:
             ans = "FOUND NOTHING"
-            return render(request, 'webbot/index.htm', {'ans': ans, 'query': query})
+            return render(request, 'webbot/index.html', {'ans': ans, 'query': query})
 
