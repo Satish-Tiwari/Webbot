@@ -14,7 +14,7 @@ def bot_search(request):
 
     
     try:
-        client = wolframalpha.Client("X2A4HL-W6L8TKGT6G")
+        client = wolframalpha.Client("wolframalphaID")
         res = client.query(query)
         ans = next(res.results).text
         return render(request, 'webbot/index.html', {'ans': ans, 'query': query})
